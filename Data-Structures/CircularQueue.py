@@ -52,11 +52,11 @@ class Queue:
 
 
     # Function to return the front of queue
-    def front(self):
+    def getFront(self):
         return self.queue[self.front]
 
     # Function to return the rear of queue
-    def rear(self):
+    def getRear(self):
         return self.queue[self.rear]
       
     def traverse(self):
