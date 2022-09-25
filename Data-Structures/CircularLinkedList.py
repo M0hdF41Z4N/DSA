@@ -12,6 +12,7 @@ class CircularLinkedList:
     def __init__(self):
         self.tail = None
 
+    # Function to check if List is empty
     def isEmpty(self):
         return self.tail == None
     
@@ -38,6 +39,7 @@ class CircularLinkedList:
             self.tail.next = new_node
             self.tail = new_node
     
+    # Function to search element
     def search(self,item):
         if self.isEmpty():
             return False
@@ -67,7 +69,8 @@ class CircularLinkedList:
                     prev.next = new_node
                 else:
                     return "Item not found"
-            
+    
+    # Function to traverse through list
     def traverse(self):
         if self.isEmpty():
             return "List is Empty"
@@ -78,6 +81,35 @@ class CircularLinkedList:
             if trav == self.tail.next:
                 break
         print("\n")
+
+    # Function to delete the front of list
+    def deleteFront(self):
+        front = self.tail.next
+        data = front.data
+        self.tail.next = front.next
+        return data
+
+    # Function to delete node
+    def deleteNode(self,key):
+        if self.tail.next.data == key:
+            return self.deleteFront()
+        else:
+            curr = self.tail.next
+            prev = curr
+            while curr.next:
+                prev = curr
+                curr = curr.next
+                if curr.data == key:
+                    break
+                elif curr.next == self.tail.next:
+                    return "Node % not found" % key
+            prev.next = curr.next
+            data = curr.data
+            return data
+
+
+
+        
 
 
 
