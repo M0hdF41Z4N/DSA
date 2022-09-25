@@ -2,15 +2,18 @@
 # Using Singly Linked List
 
 class Node:
-  def __init__(self,val):
-    self.data = val
-    self.next = none
+    def __init__(self,val):
+        self.data = val
+        self.next = None
     
     
     
 class CircularLinkedList:
-  def __init__(self):
-    self.tail = None
+    def __init__(self):
+        self.tail = None
+
+    def isEmpty(self):
+        return self.tail == None
     
     # Function to add element in front of List    
     def addFront(self,key):
@@ -34,7 +37,18 @@ class CircularLinkedList:
             new_node.next = self.tail.next
             self.tail.next = new_node
             self.tail = new_node
-        
+    
+    def search(self,item):
+        if self.isEmpty():
+            return False
+        trav = self.tail.next
+        while trav :
+            if trav.data == item:
+                return trav
+            trav = trav.next
+            if trav == self.tail.next:
+                break
+        return False
         
     # Function to add element after a node of List
     def addAfter(self,data,key):
@@ -46,16 +60,13 @@ class CircularLinkedList:
             elif self.tail.next == data:
                 self.addFront(key)
             else:
-                trav = self.tail.next
-                new_node = Node(key)
-                while trav :
-                    if trav.data == data:
-                        break
-                    elif trav.data == self.tail.next:
-                        return "Item not found"
-                    trav = trav.next
-                new_node.next = trav.next
-                trav.next = new_node
+                if self.search(data):
+                    prev = self.search(data)
+                    new_node = Node(key)
+                    new_node.next = prev.next
+                    prev.next = new_node
+                else:
+                    return "Item not found"
             
     def traverse(self):
         if self.isEmpty():
@@ -67,4 +78,22 @@ class CircularLinkedList:
             if trav == self.tail.next:
                 break
         print("\n")
-    
+
+
+
+# Driver Code
+
+l = CircularLinkedList()
+for i in range(5):
+    l.addFront(i)
+l.append(5)
+l.traverse()
+print(l.addAfter(55,10))
+l.traverse()
+l.addAfter(2,10)
+l.addAfter(4,11)
+l.addAfter(5,12)
+l.traverse()
+
+
+
