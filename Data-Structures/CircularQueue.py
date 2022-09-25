@@ -1,5 +1,7 @@
 # Implementation of Circular Queue
 
+print("Hello Github")
+
 class Queue:
     # Constructor
     def __init__(self,k):
