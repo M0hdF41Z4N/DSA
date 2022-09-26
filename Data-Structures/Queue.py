@@ -38,11 +38,11 @@ class Queue:
         
 
     # Function to give front of the Queue
-    def getfront():
+    def getfront(self):
         return self.front.data
 
     # Function to give rear of the Queue
-    def getrear():
+    def getrear(self):
         return self.rear.data
 
 
@@ -54,6 +54,7 @@ class Queue:
         while copy:
             print(copy.data,end=" | ")
             copy = copy.next
+        print("\n")
 
     def peeking(self):
         return self.front.data
@@ -63,9 +64,13 @@ if __name__== '__main__':
     q = Queue()
     q.Enqueue(10)
     q.Enqueue(20)
+    q.display()
     q.Dequeue()
     q.Dequeue()
+    q.display()
     q.Enqueue(30)
     q.Enqueue(40)
-    q.Enqueue(50) 
-    q.Dequeue()  
+    q.Enqueue(50)
+    q.display()
+    q.Dequeue()
+    q.display()
