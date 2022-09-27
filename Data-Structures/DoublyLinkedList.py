@@ -1,6 +1,5 @@
 #  Doubly Linked List Implementation
 
-# Task : Function remove from last not working
 
 
 class Node:
@@ -158,12 +157,10 @@ class DoublyLinkedList:
         if self.isEmpty():
             return "List is Empty"
         else:
-            prev = self.tail.prev
             data = self.tail.data
-            prev.next = None
-            self.tail = prev
+            self.tail = self.tail.prev
             # Memory Cleanup
-            #self.tail.next = None
+            self.tail.next = None
         return data
 
     def removeAt(self,index):
@@ -226,7 +223,12 @@ DB.traverse()
 DB.append(1)
 DB.append(2)
 DB.append(9)
+DB.append(8)
+DB.append(7)
 DB.traverse()
+print(DB.removeLast())
+DB.traverse()
+print(DB.removeLast())
 DB.insertAt(2,888)
 DB.traverse()
 DB.removeFirst()

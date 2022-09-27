@@ -17,7 +17,7 @@ class Queue:
     
     # Function to check wheather Queue is empty or not
     def isEmpty(self):
-        return self.front == -1
+        return self.front == -1 or self.front > self.rear
 
     # Function to check the size of the queue
     def size(self):
@@ -36,12 +36,12 @@ class Queue:
 
     # Function to enqueue an element
     def Enqueue(self,item):
-        if self.isEmpty():
+        if self.isFull():
+            return "Queue is full"
+        elif self.isEmpty():
             self.rear = self.front = 0
             self.array[self.rear] = item
             self.length += 1
-        elif self.isFull():
-            return "Queue is full"
         else:
             self.rear += 1
             self.array[self.rear] = item
@@ -51,8 +51,6 @@ class Queue:
     # Function to dequeue element
     def Dequeue(self):
         if self.isEmpty() :
-            return "Queue is empty"
-        elif self.front == self.rear:
             return "Queue is empty"
         else:
             data = self.array[self.front]
@@ -64,8 +62,6 @@ class Queue:
     # Function to display
     def traverse(self):
         if self.isEmpty():
-            print("Queue is Empty")
-        elif self.front == self.rear:
             print("Queue is Empty")
         else:
             for i in range(self.front,self.rear+1):
@@ -80,6 +76,7 @@ q.Enqueue(0)
 q.Enqueue(0)
 q.Enqueue(7)
 q.traverse()
+
 
 
 
