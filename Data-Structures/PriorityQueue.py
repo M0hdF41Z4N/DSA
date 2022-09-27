@@ -2,9 +2,6 @@
 # Max to Min
 
 
-# Not working
-
-
 
 class Queue:
     # Constructor
@@ -30,15 +27,14 @@ class Queue:
 
 
     def insert(self,item):
-        n = len(self.arr)
-        if n == 0:
+        if self.size == 0:
             self.arr.append(item)
             self.size += 1
         else:
             self.arr.append(item)
             self.size += 1
-            for i in range((n//2)-1,-1,-1):
-                self.heapify(self.arr,n,i)
+            for i in range((self.size//2)-1,-1,-1):
+                self.heapify(self.arr,self.size,i)
 
     # Native approach to search in heap 
     def search(self,item):
@@ -51,9 +47,8 @@ class Queue:
 
 
     def delete(self,item):
-        n = len(self.arr)
         # base case
-        if n == 0:
+        if self.size == 0:
             return
         else:
             # find the item in the heap
@@ -65,18 +60,18 @@ class Queue:
                 self.arr[i] , self.arr[-1] = self.arr[-1] , self.arr[i]
             
                 # delete the last element
-                self.arr = self.arr[:n-1]
+                self.arr = self.arr[:self.size-1]
                 self.size -= 1
 
                 # heapify the arr
-                for i in range((n//2)-1,-1,-1):
-                    self.heapify(self.arr,n,i)
+                for i in range((self.size//2)-1,-1,-1):
+                    self.heapify(self.arr,self.size,i)
 
             else:
                 return i
 
 
-    def peek(self):
+    def Max(self):
         return self.arr[0]
 
     def traverse(self):
@@ -91,8 +86,8 @@ for i in range(5):
     q.insert(i)
 q.insert(5)
 q.traverse()
-#q.delete(3)
-#q.traverse()
+q.delete(3)
+q.traverse()
 
     
 
