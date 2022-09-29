@@ -161,6 +161,7 @@ class DoublyLinkedList:
             self.tail = self.tail.prev
             # Memory Cleanup
             self.tail.next = None
+            self.size -= 1
         return data
 
     def removeAt(self,index):
@@ -183,6 +184,8 @@ class DoublyLinkedList:
                 i -= 1
                 trav = trav.prev
 
+        self.size -= 1
+
     def remove(self,item):
         trav = self.head
 
@@ -201,6 +204,7 @@ class DoublyLinkedList:
                     return True
 
                 trav =  trav.next
+            self.size -= 1 
 
         return False
     
