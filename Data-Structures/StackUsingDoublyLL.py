@@ -18,6 +18,7 @@ class Stack:
             self.head = self.tail = new_node
             self.size+=1
         else:
+            new_node.prev = self.tail
             self.tail.next = new_node
             self.tail = self.tail.next
             self.size+=1
@@ -27,7 +28,7 @@ class Stack:
             return "Stack is Empty"
         else:
             data = self.tail.data
-            self.tail = self.tail.next
+            self.tail = self.tail.prev
             self.size -= 1
 
         if self.isEmpty():
@@ -51,6 +52,7 @@ class Stack:
             return "Stack is Empty"            
         
         trav = self.head
+        print("---------------")
         while trav :
             print(trav.data,end="\n")
             trav = trav.next
