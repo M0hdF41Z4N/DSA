@@ -20,9 +20,16 @@ def heapify(arr,n,i):
         # Heapify the root
         heapify(arr,n,largest)
 
-def heapSort(arr,n):
+# Function to build Heap
+def buildHeap(arr,n):
     for i in range((n//2),-1,-1):
         heapify(arr,n,i)
+    
+# Function for heap sort
+def heapSort(arr,n):
+    
+    # call to build heap
+    buildHeap(arr,n)
 
     for i in range(n-1,0,-1):
         # Swap
