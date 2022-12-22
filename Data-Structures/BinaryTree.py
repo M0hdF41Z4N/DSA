@@ -12,9 +12,16 @@ class binary_tree:
         self.root = None
         self.nodeCount = 0
 
+    # Function to return the height of binary tree
     def height(self):
-        pass
+        return self.__height(self.root)
 
+    def __height(self,node):
+        if node == None:
+            return 0
+        return max(self.__height(node.left) , self.__height(node.right)) + 1
+
+    # Function to build binary tree using pre-order traversal and in-order traversal
     def build_using_in_pre_order(self,inOrder,inStart,inEnd,preOrder,preStart,preEnd):
         if (preStart>preEnd or inStart>inEnd):
             return None
@@ -35,6 +42,7 @@ class binary_tree:
         root.right = self.build_using_in_pre_order(preOrder,preStart+(k-inStart)+1,preEnd,inOrder,k+1,inEnd)
         return root
     
+    # Function to build binary tree using post-order traversal and in-order traversal
     def build_using_in_post_order(self,inOrder,inStart,inEnd,postOrder,postStart,postEnd):
         if (postStart>postEnd or inStart>inEnd):
             return None
@@ -177,3 +185,29 @@ class binary_tree:
                 print("R:{0}".format(node.right.data),end="")
                 queue.append(node.right)
             print("\n")
+
+def take_tree_input(root,parent,left):
+    if root:
+        print("Enter root data : ")
+    else:
+        if left:
+            print("Enter left data : {}".format(parent.data))
+        else:
+            print("Enter right data : {}".format(parent.data))
+    n = int(input())
+    if n == -1:
+        return
+    root = Node(n)
+    root.left = take_tree_input(False,root,True)
+    root.right = take_tree_input(False,root,False)
+    return root
+
+
+
+# Driver Code
+
+if __name__ == "__main__":
+    BT = binary_tree()
+    i = take_tree_input(True,0,True)
+    BT.root = i
+    BT.print()
