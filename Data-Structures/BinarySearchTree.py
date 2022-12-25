@@ -269,7 +269,8 @@ class BST:
                 queue.append(node.right)
             print("\n")
     
-    
+    # Function to check wheather BST is Valid or Not
+
     def __check_BST(self,node,min_range,max_range):
         if node is None:
             return True
@@ -285,25 +286,39 @@ class BST:
     def check_BST(self):
         return self.__check_BST(self.root,-sys.maxsize,sys.maxsize)
 
-    def build(self):
-        pass
+    # Function to build BST using sorted array
+    def build(self,arr):
+        self.root = self.__build(arr,0,len(arr)-1)
 
+    def __build(self,arr,low,high):
+        if low <= high:
+            mid = (low+high)//2
+            node = Node(arr[mid])
+            node.left = self.__build(arr,low,mid-1)
+            node.right = self.__build(arr,mid+1,high)
+            return node
+        else:
+            return None
+    
+    # Function to check that Binary Search tree is balanced or not
     def balance(self):
-        pass   
+        pass
+        
+
 
   
     
 # Driver code
 
 tree = BST()
-print(tree.add(7))
-print(tree.add(8))
-print(tree.add(6))
-print(tree.print())
+# print(tree.add(7))
+# print(tree.add(8))
+# print(tree.add(6))
+# print(tree.print())
 # print(tree.inOrder())
 # print(tree.preOrder())
 # print(tree.postOrder())
-print(tree.check_BST())
+# print(tree.check_BST())
 #print(tree.add(1))
 #print(tree.add(3))
 #print(tree.add(4))
@@ -324,3 +339,5 @@ print(tree.check_BST())
 
 
 #print(tree.height())
+# tree.build([1,2,3,4,5,6,7])
+# tree.print()

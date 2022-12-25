@@ -168,6 +168,29 @@ class binary_tree:
                 queue.append(node.right)
         return Order
 
+    # Function to check that Binary Tree is balanced or not
+    def check_balance(self):
+        height , bal = self.__check_balance(self.root)
+        return bal
+
+    def __check_balance(self,root):
+        if root == None:
+            height = 0
+            is_bal = True
+            return height,is_bal
+        left_height , left_bal = self.__check_balance(root.left)
+        right_height , right_bal = self.__check_balance(root.right)
+        is_bal = True
+        height = 1+max(left_height,right_height)
+
+        if (abs(left_height-right_height)>1):
+            is_bal = False
+        if ((not left_bal) or (not right_bal)):
+            is_bal = False
+
+        return height,is_bal
+
+    # Function to print the more detail tree
     def print(self):
         return self.__print(self.root)
     
@@ -211,3 +234,4 @@ if __name__ == "__main__":
     i = take_tree_input(True,0,True)
     BT.root = i
     BT.print()
+    print(BT.check_balance())
