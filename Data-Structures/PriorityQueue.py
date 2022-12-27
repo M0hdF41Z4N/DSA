@@ -35,12 +35,18 @@ class Priority_Queue:
 
     # Function to get the max element in the priority queue, O(1)
     def get_max(self):
+        #  returning -Infinity if priority queue is empty
+        if self.is_empty():
+            return -sys.maxsize
         return self.heap[0]
     
     # Function to delete and return the maximum element 
     # present in the priority queue. Return -Infinity if priority queue is empty.
     # O(log(n))
     def poll(self):
+        #  returning -Infinity if priority queue is empty
+        if self.is_empty():
+            return -sys.maxsize
         return self.remove_at(0)
 
     # Perform bottom up node swim, O(log(n))
@@ -107,16 +113,7 @@ class Priority_Queue:
     def traverse(self):
         print("Max-Heap array",self.heap)
 
-# case 1 : // insert
-# 					
-# 				case 2 : // getMax
-# 					
-# 				case 3 : // removeMax
-# 					
-# 				case 4 : // size
-# 					
-# 				case 5 : // isEmpty
-    
+
 # Driver Code
 
 pq = Priority_Queue()
