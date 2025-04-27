@@ -1,4 +1,5 @@
 def Knuth–Morris–Pratt(needel,haystack)
+    # Also known as : KMP Algo
     # Edge case: empty pattern
     if not needle:
         return 0
